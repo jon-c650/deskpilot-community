@@ -1,0 +1,125 @@
+﻿using System;
+using Terminals.Configuration;
+using Terminals.Security;
+
+namespace Terminals.Data
+{
+    /// <summary>
+    /// Provides persistence authentication and manipulations with master password.
+    /// Doesn't distinguish between application and persistence master password.
+    /// </summary>
+    internal class PersistenceSecurity
+    {
+        private readonly Settings settings = Settings.Instance;
+        private bool isAuthenticated;
+
+        protected string KeyMaterial { get; private set; }
+
+        protected virtual string PersistenceKeyMaterial { get { return this.KeyMaterial; }  }
+
+        internal bool IsMasterPasswordDefined
+        {
+            get
+            {
+                return AuthenticationSequence.IsMasterPasswordDefined();
+            }
+        }
+
+        internal event Action<string> OnUpdatePasswordsByNewMasterPassword;
+
+        internal PersistenceSecurity()
+        {
+            this.KeyMaterial = string.Empty;
+        }
+
+        /// <summary>
+        /// Creates new instance and initializes internal state from sourceSecurity.
+        /// </summary>
+        /// <param name="sourceSecurity">Not null current security instance to initialize from.</param>
+        internal PersistenceSecurity(PersistenceSecurity sourceSecurity)
+        {
+            this.KeyMaterial = sourceSecurity.KeyMaterial;
+        }
+
+        internal bool Authenticate(Func<bool, AuthenticationPrompt> knowsUserPassword)
+        {
+            // don't prompt user third time for password when upgrading passwords from v2
+            if (this.isAuthenticated)
+                return true;
+            
+            var authentication = new AuthenticationSequence(this.IsMasterPasswordValid, knowsUserPassword);
+            this.isAuthenticated = authentication.AuthenticateIfRequired();
+            return this.isAuthenticated;
+        }
+
+        private Boolean IsMasterPasswordValid(string passwordToCheck)
+        {
+            string storedMasterPassword = this.settings.MasterPasswordHash;
+            bool isValid = PasswordFunctions2.MasterPasswordIsValid(passwordToCheck, storedMasterPassword);
+            if (isValid)
+            {
+                this.KeyMaterial = PasswordFunctions2.CalculateMasterPasswordKey(passwordToCheck, storedMasterPassword);
+                if(!String.IsNullOrEmpty(passwordToCheck) && !MasterKeyEnvelope.IsModern(storedMasterPassword)) {
+                    try {
+                        string upgraded=MasterKeyEnvelope.Wrap(passwordToCheck,this.KeyMaterial);
+                        if(MasterKeyEnvelope.Unwrap(passwordToCheck,upgraded)!=this.KeyMaterial) throw new InvalidOperationException("Master-key upgrade verification failed.");
+                        this.settings.UpgradeMasterKeyEnvelope(storedMasterPassword,upgraded);
+                    } catch(Exception error) {
+                        Logging.Warn("Master-key envelope upgrade could not be saved: "+error.GetType().Name);
+                        System.Windows.Forms.MessageBox.Show("Your existing credentials are readable, but stronger master-password protection could not be saved. Check that your DeskPilot settings file is writable, then restart to retry. Existing data was retained.","DeskPilot security",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Warning);
+                    }
+                }
+                return true;
+            }
+
+            return false;
+        }
+
+        internal void UpdateMasterPassword(string newPassword)
+        {
+            string storedMasterPassword = PasswordFunctions2.CalculateStoredMasterPasswordKey(newPassword);
+            string newMasterKey = PasswordFunctions2.CalculateMasterPasswordKey(newPassword, storedMasterPassword);
+
+            // start of not secured transaction. Old key is still present,
+            // but passwords are already encrypted by new Key
+            if (this.OnUpdatePasswordsByNewMasterPassword != null)
+                this.OnUpdatePasswordsByNewMasterPassword(newMasterKey);
+
+            this.settings.UpdateConfigurationPasswords(newMasterKey, storedMasterPassword);
+            // finish transaction, the passwords now reflect the new key
+            this.KeyMaterial = newMasterKey;
+        }
+
+        /// <summary>
+        /// Use only to resolve settings file passwords
+        /// </summary>
+        internal string DecryptPassword(string encryptedPassword)
+        {
+            return PasswordFunctions2.DecryptPassword(encryptedPassword, this.KeyMaterial);
+        }
+
+        /// <summary>
+        /// Use only to store settings file passwords
+        /// </summary>
+        internal string EncryptPassword(string decryptedPassword)
+        {
+            return PasswordFunctions2.EncryptPassword(decryptedPassword, this.KeyMaterial);
+        }
+
+        /// <summary>
+        /// Use only to resolve all other passwords except settings file passwords
+        /// </summary>
+        internal string DecryptPersistencePassword(string encryptedPassword)
+        {
+            return PasswordFunctions2.DecryptPassword(encryptedPassword, this.PersistenceKeyMaterial);
+        }
+
+        /// <summary>
+        /// Use only to store all other passwords except settings file passwords
+        /// </summary>
+        internal string EncryptPersistencePassword(string decryptedPassword)
+        {
+            return PasswordFunctions2.EncryptPassword(decryptedPassword, this.PersistenceKeyMaterial);
+        }
+    }
+}

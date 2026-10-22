@@ -1,0 +1,22 @@
+# Generated outputs, downloaded dependencies and local user material
+**/bin/
+**/obj/
+.vs/
+ci-logs/
+source-output/
+installer-output/
+distribution/
+website-package/
+source-rebuild/
+source-candidate/
+upstream/Terminals/Build/
+upstream/Terminals/Source/packages/
+upstream/Terminals/Resources/Libraries/
+*.user
+*.suo
+*.pfx
+*.snk
+*.key
+*.conf
+/*.rdp
+.env

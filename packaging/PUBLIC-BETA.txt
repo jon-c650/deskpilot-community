@@ -1,0 +1,23 @@
+DeskPilot Beta 0.1.0-beta.3
+
+Free beta software from DeskPilot contributors, based on Terminals.
+The software is supplied as-is under the included licenses, without warranty.
+See LICENSE.md and THIRD-PARTY-NOTICES.md. There is no vendor endorsement.
+
+The exact matching source ZIP is installed in the application's Source folder
+and is also supplied alongside the website installer. Keep source, notices and
+checksums together when redistributing this beta. The private repository is not
+required for recipients to obtain this release's source.
+
+Setup installs for your current Windows user. Saved DeskPilot connections,
+credentials, folder defaults, VPN associations and original Terminals files are
+not migration or removal targets. Close DeskPilot and sessions before upgrading.
+Uninstall removes the installed application and shortcuts, retaining saved data.
+
+Web sessions require Microsoft Edge WebView2 Runtime. VPN requires official
+WireGuard for Windows. Privileged tunnel operations retain ordinary Windows UAC.
+RDP uses the Windows-installed control. No Windows security settings are relaxed.
+
+This installer is unsigned. Windows may show publisher/reputation warnings.
+A beta may contain bugs; retain your normal backups and test your connection
+workflows before relying on it for administration.

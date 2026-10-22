@@ -1,0 +1,311 @@
+name: DeskPilot Windows baseline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 30
+    steps:
+      - name: Checkout DeskPilot
+        uses: actions/checkout@v4
+
+      - name: Configure MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Configure NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Retarget legacy projects for CI only
+        shell: pwsh
+        run: |
+          $root = 'upstream/Terminals/Source'
+          Get-ChildItem $root -Filter *.csproj -Recurse | ForEach-Object {
+            $path = $_.FullName
+            $source = [System.IO.File]::ReadAllText($path)
+            $updated = [regex]::Replace($source, '<TargetFrameworkVersion>v(?:2\.0|3\.5|4\.0|4\.5|4\.5\.1|4\.5\.2|4\.6|4\.6\.1|4\.6\.2|4\.7|4\.7\.1|4\.7\.2)</TargetFrameworkVersion>', '<TargetFrameworkVersion>v4.8</TargetFrameworkVersion>')
+            if ($source -ne $updated) {
+              [System.IO.File]::WriteAllText($path, $updated)
+              Write-Host "Retargeted $($_.FullName)"
+            }
+          }
+
+      - name: Restore packages
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path ci-logs | Out-Null
+          nuget restore packaging/packages.config -PackagesDirectory upstream/Terminals/Source/packages -ConfigFile packaging/NuGet.Config -NonInteractive -Verbosity detailed *> ci-logs/restore.log
+          $code = $LASTEXITCODE
+          Get-Content ci-logs/restore.log -Tail 45
+          if ($code -ne 0) { exit $code }
+
+      - name: Prepare current SSH binaries
+        shell: pwsh
+        run: ./scripts/prepare-session-dependencies.ps1
+
+      - name: Generate RDP API wrappers from installed Windows
+        shell: pwsh
+        run: ./scripts/prepare-rdp-interop.ps1
+
+      - name: Build main Terminals application
+        shell: pwsh
+        run: |
+          msbuild upstream/Terminals/Source/Terminals/Terminals.csproj /t:Rebuild /p:Configuration=Release /p:Platform=AnyCPU /p:RestorePackages=false /m /v:minimal /bl:ci-logs/build.binlog *> ci-logs/build.log
+          $code = $LASTEXITCODE
+          Get-Content ci-logs/build.log -Tail 100
+          if ($code -ne 0) { exit $code }
+
+      - name: Build RDP protocol plugin
+        shell: pwsh
+        run: |
+          $project = 'upstream/Terminals/Source/Terminals.Plugins.Rdp/Terminals.Plugins.Rdp.csproj'
+          msbuild $project /t:Rebuild /p:Configuration=Release /p:Platform=AnyCPU /m /v:minimal *> ci-logs/rdp-build.log
+          $code = $LASTEXITCODE
+          Get-Content ci-logs/rdp-build.log -Tail 80
+          if ($code -ne 0) { exit $code }
+
+      - name: Build embedded SSH and web plugins
+        shell: pwsh
+        run: |
+          foreach ($plugin in @('Putty','Web')) {
+            msbuild "upstream/Terminals/Source/Terminals.Plugins.$plugin/Terminals.Plugins.$plugin.csproj" /t:Rebuild /p:Configuration=Release /p:Platform=AnyCPU /m /v:minimal *> "ci-logs/$plugin-build.log"
+            $code = $LASTEXITCODE
+            Get-Content "ci-logs/$plugin-build.log" -Tail 60
+            if ($code -ne 0) { exit $code }
+          }
+          $root = 'upstream/Terminals/Build/Output/Release'
+          $sdk = 'upstream/Terminals/Source/packages/Microsoft.Web.WebView2.1.0.4258.31'
+          Copy-Item "$sdk/lib/net462/Microsoft.Web.WebView2.Core.dll","$sdk/lib/net462/Microsoft.Web.WebView2.WinForms.dll" $root
+          foreach ($architecture in @('x86','x64','arm64')) {
+            $destination = Join-Path $root "runtimes/win-$architecture/native"
+            New-Item -ItemType Directory -Force $destination | Out-Null
+            Copy-Item "$sdk/runtimes/win-$architecture/native/WebView2Loader.dll" $destination
+          }
+          Copy-Item 'upstream/Terminals/Resources/Libraries/Putty/LICENCE-PuTTY.txt' "$root/Plugins/Putty/Resources/"
+          foreach ($file in @('Plugins/Putty/Terminals.Plugins.Putty.dll','Plugins/Web/Terminals.Plugins.Web.dll','Microsoft.Web.WebView2.Core.dll','runtimes/win-x86/native/WebView2Loader.dll')) {
+            if (-not (Test-Path (Join-Path $root $file))) { throw "Session dependency missing: $file" }
+          }
+
+      - name: Verify RDP plugin package
+        shell: pwsh
+        run: |
+          $root = 'upstream/Terminals/Build/Output/Release'
+          $rdp = Join-Path $root 'Plugins/Rdp/Terminals.Plugins.Rdp.dll'
+          if (-not (Test-Path $rdp)) { throw "RDP plugin missing from output: $rdp" }
+          foreach ($dependency in @('AxInterop.MSTSCLib.dll','MSTSCLib.dll')) {
+            $candidates = @(Get-ChildItem (Join-Path $root 'Plugins/Rdp') -Filter $dependency -File -ErrorAction SilentlyContinue)
+            if ($candidates.Count -eq 0) { throw "RDP plugin dependency missing: $dependency" }
+          }
+          Write-Host "RDP plugin and interop dependencies present."
+
+      - name: Build isolated native WireGuard profile helper
+        shell: pwsh
+        run: |
+          $vswhere = "${env:ProgramFiles(x86)}/Microsoft Visual Studio/Installer/vswhere.exe"
+          $install = & $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+          if (-not $install) { throw 'MSVC build tools are unavailable' }
+          $dev = Join-Path $install 'Common7/Tools/VsDevCmd.bat'
+          @('@echo off', ('call "' + $dev + '" -arch=x86 -host_arch=x64'), 'if errorlevel 1 exit /b 1', 'cd /d "%GITHUB_WORKSPACE%"', 'call helpers\WireGuardProfiles\build.cmd', 'exit /b %errorlevel%') | Set-Content -Encoding ascii ci-logs/build-native.cmd
+          cmd /d /c ci-logs\build-native.cmd *> ci-logs/wireguard-helper-build.log
+          $code = $LASTEXITCODE
+          Get-Content ci-logs/wireguard-helper-build.log -Tail 60
+          if ($code -ne 0) { exit $code }
+
+      - name: Identify this preview build
+        shell: pwsh
+        run: Set-Content -Encoding ascii upstream/Terminals/Build/Output/Release/BUILD.txt $env:GITHUB_SHA
+
+      - name: Prepare disposable SQL compatibility fixture
+        shell: powershell
+        run: ./scripts/prepare-ci-sql.ps1
+
+      - name: Exercise integrated overlay UI without a live server
+        shell: pwsh
+        env:
+          DESKPILOT_UI_SMOKE: '1'
+        run: |
+          $exe = Resolve-Path 'upstream/Terminals/Build/Output/Release/DeskPilot.Preview.exe'
+          $process = Start-Process $exe -PassThru
+          $finished = $process.WaitForExit(180000)
+          if (-not $finished) { $process.Kill() }
+          $dir = Split-Path $exe
+          Copy-Item "$dir/ui-*" ci-logs/ -ErrorAction SilentlyContinue
+          Get-Content "$dir/ui-smoke.txt"
+          if (-not $finished) { throw 'Integrated UI smoke timed out' }
+          if ($process.ExitCode -ne 0) { throw "UI smoke failed: $($process.ExitCode)" }
+          if (@(Select-String "$dir/ui-smoke.txt" -Pattern '^PASS geometry mask=').Count -ne 2) { throw 'Missing overlay checks' }
+          foreach ($check in @('^PASS legacy master authentication','^PASS atomic master-key file upgrade','^PASS folder VPN picker','^PASS reopened folder defaults','^PASS batch setup failure','^PASS DeskPilot executable metadata','^PASS native WireGuard import safeguards','^PASS embedded SSH','^PASS embedded web','^PASS actual Add Connection','^PASS Windows downloaded-plugin block')) {
+            if (-not (Select-String "$dir/ui-smoke.txt" -Pattern $check)) { throw "Missing security/regression check: $check" }
+          }
+
+      - name: Check isolated preview output
+        if: success()
+        shell: pwsh
+        run: |
+          $dir = 'upstream/Terminals/Build/Output/Release'
+          $exe = Join-Path $dir 'DeskPilot.Preview.exe'
+          if (-not (Test-Path $exe)) { throw "Missing expected preview executable: $exe" }
+          $legacy = Join-Path $dir 'Terminals.exe'
+          if (Test-Path $legacy) { throw "Legacy executable unexpectedly packaged: $legacy" }
+          Write-Host "Verified $exe"
+
+      - name: Package exact reviewed corresponding source
+        if: success()
+        shell: pwsh
+        run: |
+          python scripts/package-source.py source-output
+          if ($LASTEXITCODE -ne 0) {throw 'Source packaging failed'}
+
+      - name: Generate SHA256 checksums
+        if: success()
+        shell: pwsh
+        run: |
+          $dir = 'upstream/Terminals/Build/Output/Release'
+          Copy-Item docs/ui/WINDOWS-PREVIEW.md (Join-Path $dir 'READ-ME-FIRST.md')
+          Copy-Item docs/licenses (Join-Path $dir 'licenses') -Recurse
+          Copy-Item docs/release/LICENSE-REVIEW.md (Join-Path $dir 'LICENSE-REVIEW.md')
+          Copy-Item packaging/public-release.json (Join-Path $dir 'public-release.json')
+          Copy-Item upstream/Terminals/Resources/Libraries/mstsc/GENERATION.json (Join-Path $dir 'licenses/RDP-INTEROP-PROVENANCE.json')
+          Copy-Item upstream/Terminals/LICENSE.md (Join-Path $dir 'LICENSE.md')
+          Copy-Item docs/release/THIRD-PARTY-NOTICES.md (Join-Path $dir 'THIRD-PARTY-NOTICES.md')
+          Get-ChildItem $dir -Recurse -File | Where-Object { $_.Extension -in '.exe','.dll' } | ForEach-Object {
+            $hash = Get-FileHash -Algorithm SHA256 $_.FullName
+            "$($hash.Hash)  $([IO.Path]::GetRelativePath((Resolve-Path $dir), $_.FullName))"
+          } | Set-Content (Join-Path $dir 'SHA256SUMS.txt')
+
+      - name: Stage a separate versioned preview folder
+        if: success()
+        shell: pwsh
+        run: |
+          $name = 'DeskPilot-' + $env:GITHUB_SHA.Substring(0,8)
+          New-Item -ItemType Directory -Force "distribution/$name" | Out-Null
+          Copy-Item 'upstream/Terminals/Build/Output/Release/*' "distribution/$name/" -Recurse
+          if (-not (Test-Path "distribution/$name/Plugins/Putty/Terminals.Plugins.Putty.dll") -or -not (Test-Path "distribution/$name/Plugins/Web/Terminals.Plugins.Web.dll")) { throw 'Staged session plugins missing' }
+          if ((Get-FileHash "distribution/$name/DeskPilot.Preview.exe").Hash -ne (Get-FileHash 'upstream/Terminals/Build/Output/Release/DeskPilot.Preview.exe').Hash) { throw 'Packaged executable differs from tested executable' }
+          Add-Type -AssemblyName System.Drawing
+          $icon = [System.Drawing.Icon]::ExtractAssociatedIcon((Resolve-Path "distribution/$name/DeskPilot.Preview.exe"))
+          $bitmap = $icon.ToBitmap()
+          $bitmap.Save((Join-Path $env:GITHUB_WORKSPACE 'ci-logs/packaged-exe-icon.png'))
+          $bitmap.Dispose()
+          $icon.Dispose()
+
+      - name: Build source-complete beta installer
+        if: success()
+        shell: pwsh
+        run: |
+          $source = (Get-ChildItem source-output -Filter '*-Source.zip').FullName
+          ./scripts/build-beta-installer.ps1 -PayloadDir upstream/Terminals/Build/Output/Release -SourceArchive $source -PublicRelease
+
+      - name: Test install, installed application and data-preserving uninstall
+        if: success()
+        shell: pwsh
+        run: ./scripts/test-beta-installer.ps1
+
+      - name: Upload tested beta candidate
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DeskPilot-Beta-Candidate
+          path: installer-output/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deskpilot-build-logs
+          path: ci-logs/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Upload experimental application output
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DeskPilot-UI-Preview-Windows-EXPERIMENTAL
+          path: distribution/
+          if-no-files-found: warn
+          retention-days: 7
+
+  source-rebuild:
+    needs: build
+    runs-on: windows-2022
+    timeout-minutes: 30
+    steps:
+      - name: Download tested candidate with corresponding source
+        uses: actions/download-artifact@v4
+        with:
+          name: DeskPilot-Beta-Candidate
+          path: source-candidate
+      - name: Configure MSBuild
+        uses: microsoft/setup-msbuild@v2
+      - name: Configure NuGet
+        uses: NuGet/setup-nuget@v2
+      - name: Verify and extract exact source archive
+        shell: pwsh
+        run: |
+          $archive = (Get-ChildItem source-candidate -Filter '*-Source.zip').FullName
+          Expand-Archive $archive source-rebuild
+          python source-rebuild/scripts/verify-source.py $archive source-candidate/BUILD.txt
+          if ($LASTEXITCODE -ne 0) {throw 'Source manifest verification failed'}
+      - name: Rebuild solely from the source download
+        shell: pwsh
+        working-directory: source-rebuild
+        run: ./scripts/build-from-source.ps1
+      - name: Prepare fresh disposable SQL fixture for rebuilt application
+        shell: powershell
+        working-directory: source-rebuild
+        run: ./scripts/prepare-ci-sql.ps1
+      - name: Exercise rebuilt application from the source archive
+        shell: pwsh
+        working-directory: source-rebuild
+        env:
+          DESKPILOT_UI_SMOKE: '1'
+        run: |
+          $exe = Resolve-Path upstream/Terminals/Build/Output/Release/DeskPilot.Preview.exe
+          $p = Start-Process $exe -PassThru
+          if (-not $p.WaitForExit(180000)) {$p.Kill();throw 'Source-rebuilt UI suite timed out'}
+          $dir = Split-Path $exe
+          Get-Content "$dir/ui-smoke.txt"
+          if ($p.ExitCode -ne 0) {throw 'Source-rebuilt UI suite failed'}
+          Copy-Item "$dir/ui-*" ../source-candidate/ -ErrorAction SilentlyContinue
+      - name: Upload source rebuild verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DeskPilot-Source-Rebuild-Verification
+          path: |
+            source-rebuild/upstream/Terminals/Build/Output/Release/ui-*
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Stage verified website download
+        shell: pwsh
+        run: |
+          ./source-rebuild/scripts/assert-public-release.ps1
+          New-Item -ItemType Directory website-package | Out-Null
+          $names = @('BUILD.txt','SHA256SUMS.txt','LICENSE.md','LICENSE-REVIEW.md','INSTALLER-TESTING.md','THIRD-PARTY-NOTICES.md','PUBLIC-BETA.txt')
+          foreach ($name in $names) {Copy-Item "source-candidate/$name" website-package/}
+          Get-ChildItem source-candidate -File | Where-Object {$_.Name -like '*-Setup.exe' -or $_.Name -like '*-Source.zip'} | Copy-Item -Destination website-package/
+          foreach ($line in Get-Content website-package/SHA256SUMS.txt) {
+            if ($line -notmatch '^([A-Fa-f0-9]{64})  (.+)$') {throw 'Malformed website checksum record'}
+            $expected = $Matches[1]; $name = $Matches[2]
+            if ($name -ne [IO.Path]::GetFileName($name)) {throw 'Unsafe checksum path'}
+            if ((Get-FileHash "website-package/$name").Hash -ne $expected) {throw "Website checksum mismatch: $name"}
+          }
+          @('PASS binary provenance and core regression suite','PASS installation, reinstall, in-use refusal and exact embedded source','PASS saved-data hashes survive installer lifecycle','PASS separate Windows rebuild and regression suite using only supplied source','Unsigned beta; live authenticated RDP/SSH/web/VPN acceptance remains manual.',('Workflow: https://github.com/' + $env:GITHUB_REPOSITORY + '/actions/runs/' + $env:GITHUB_RUN_ID)) | Set-Content website-package/VERIFICATION.txt
+      - name: Upload website-ready beta bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: DeskPilot-Beta-Website-Package
+          path: website-package/
+          if-no-files-found: error
+          retention-days: 30

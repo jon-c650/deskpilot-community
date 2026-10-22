@@ -1,0 +1,626 @@
+[
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/EditFavorite/FavoritePropertiesControl.resx",
+    "key": "treeIcons.ImageStream",
+    "origin": "DeskPilotArtwork.cs",
+    "count": 3
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/Controls/FavoritesTreeView.resx",
+    "key": "imageListIcons.ImageStream",
+    "origin": "DeskPilotArtwork.cs",
+    "count": 2
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/Controls/HistoryTreeView.resx",
+    "key": "imageListIcons.ImageStream",
+    "origin": "DeskPilotArtwork.cs",
+    "count": 8
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/OptionPanels/MasterPasswordOptionpanel.resx",
+    "key": "hideRevealButtonImages.ImageStream",
+    "origin": "DeskPilotArtwork.cs",
+    "count": 2
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/MainForm.resx",
+    "key": "ilTagConnections.ImageStream",
+    "origin": "DeskPilotArtwork.cs",
+    "count": 1
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/MainForm.resx",
+    "key": "ilTags.ImageStream",
+    "origin": "DeskPilotArtwork.cs",
+    "count": 1
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/MainForm.resx",
+    "key": "toolStripMenuItemCaptureManager.Image",
+    "origin": "branding/generated/519973464ecdea22c0e1.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/MainForm.resx",
+    "key": "credentialManagementToolStripMenuItem.Image",
+    "origin": "branding/generated/e3d28bd1f679946e5a01.png",
+    "sha256": "c36612769b8a0022cb50dfc0d094b5e87d8f7acdd2d1fcb880052c6ee587ed19"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/MainForm.resx",
+    "key": "toolStripButton1.Image",
+    "origin": "branding/generated/c40de2c59bbfcf7e13a8.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/MainForm.resx",
+    "key": "CredentialManagementToolStripButton.Image",
+    "origin": "branding/generated/57b5169df4f77b21a307.png",
+    "sha256": "c36612769b8a0022cb50dfc0d094b5e87d8f7acdd2d1fcb880052c6ee587ed19"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/MainForm.resx",
+    "key": "toolStripButtonCaptureManager.Image",
+    "origin": "branding/generated/ffb226a6cc1ff08e30ed.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "arrow_up",
+    "origin": "branding/generated/4f93a07177d19ae33d30.png",
+    "sha256": "ef8a2afbdbbe205fa219b31b67f17884abc95098b165aa5e9ab9714257957660"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "treeIcon_telnet",
+    "origin": "branding/generated/c458d9516241cadaae01.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "arrow_down",
+    "origin": "branding/generated/bbffa77b86254da4df10.png",
+    "sha256": "ef8a2afbdbbe205fa219b31b67f17884abc95098b165aa5e9ab9714257957660"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "server_administrator_icon",
+    "origin": "branding/generated/1e4de414593c47c22139.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "Refresh",
+    "origin": "branding/generated/ea027412ebe68e099262.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "server_network",
+    "origin": "branding/generated/7ceea6ca00f1da4fd6dd.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "star",
+    "origin": "branding/generated/6f70af36ec8adc079904.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "ControlPanel",
+    "origin": "branding/generated/2b11b27e3de35f8430ba.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "folder",
+    "origin": "branding/generated/8717b1a0c1a04c583319.png",
+    "sha256": "8469ef4b82177417efe66482065b0a16c77e3b53e4cd04a2410d1832866dde1a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "treeIcon_rdp",
+    "origin": "branding/generated/1104511e0e8fbbd1616f.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "treeIcon_ssh",
+    "origin": "branding/generated/bfc1c81f4210588b5d9f.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "screen_capture_box",
+    "origin": "branding/generated/02933701ee9e79c7cc7d.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "XPfolder_Open",
+    "origin": "branding/generated/9f1920e2e0361fde7c16.png",
+    "sha256": "8469ef4b82177417efe66482065b0a16c77e3b53e4cd04a2410d1832866dde1a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "tag_blue_delete",
+    "origin": "branding/generated/9813581a1612ad53eea0.png",
+    "sha256": "cfa2a50dec46f3e74754ee341820ae3a9d83029484ca0c026ae76f2d57968962"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "treeIcon_http",
+    "origin": "branding/generated/b3c74ad682f9493b014e.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "Progress",
+    "origin": "branding/generated/b13fbc97d9f914cb405f.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "ShowPanel",
+    "origin": "branding/generated/b06aa38ad565e31bbb93.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "amber",
+    "origin": "branding/generated/f51725330288738a539e.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "arrow_out",
+    "origin": "branding/generated/08cd9f1ccd0ff16dc5d3.png",
+    "sha256": "732f21df92d7020359d3de8c29838fc457a9fe148f5efef901a4d887ec57fd31"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "application_edit",
+    "origin": "branding/generated/5f603a731a168ae5519e.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "tag",
+    "origin": "branding/generated/8471f302a9baf3fa0d63.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "XPfolder_closed",
+    "origin": "branding/generated/c3593136dd8454c7b2e0.png",
+    "sha256": "8469ef4b82177417efe66482065b0a16c77e3b53e4cd04a2410d1832866dde1a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "camera",
+    "origin": "branding/generated/363a6a27c72ced745272.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "application_lightning",
+    "origin": "branding/generated/eb09878f0545f4a1a482.png",
+    "sha256": "732f21df92d7020359d3de8c29838fc457a9fe148f5efef901a4d887ec57fd31"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "keyboard",
+    "origin": "branding/generated/fa54bb1904b2e20ea3c2.png",
+    "sha256": "c36612769b8a0022cb50dfc0d094b5e87d8f7acdd2d1fcb880052c6ee587ed19"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "red",
+    "origin": "branding/generated/7e208423078f998a6f5d.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "Properties",
+    "origin": "branding/generated/8fb300c2ad3cdb09731a.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "green",
+    "origin": "branding/generated/5d5bb9b7d7e28e415ce1.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "tag_blue_add",
+    "origin": "branding/generated/1d12da7acd98c85198c5.png",
+    "sha256": "e4cad6d15a81e1c2892efc74f0c2ecff97c626f4b63acd587c6d974245863cdf"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "atoz",
+    "origin": "branding/generated/504fed36d8bc2be7ea65.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "disconnect",
+    "origin": "branding/generated/9b65743a76d8bf6abe64.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "NewFolderHS",
+    "origin": "branding/generated/38591bd1303cb6c06003.png",
+    "sha256": "8469ef4b82177417efe66482065b0a16c77e3b53e4cd04a2410d1832866dde1a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "add",
+    "origin": "branding/generated/2701d9892e4c522aa89c.png",
+    "sha256": "e4cad6d15a81e1c2892efc74f0c2ecff97c626f4b63acd587c6d974245863cdf"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "amazon",
+    "origin": "branding/generated/f00891cb1edd54307bec.png",
+    "sha256": "732f21df92d7020359d3de8c29838fc457a9fe148f5efef901a4d887ec57fd31"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "HidePanel",
+    "origin": "branding/generated/9abce6bee8ac8e099aea.png",
+    "sha256": "ef8a2afbdbbe205fa219b31b67f17884abc95098b165aa5e9ab9714257957660"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "polarized_glasses",
+    "origin": "branding/generated/faef396337c9566cab21.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "arrow_in",
+    "origin": "branding/generated/a144fd6872a22dbc396b.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "collapse_all",
+    "origin": "branding/generated/8a1c2e1a1a2da0500f6b.png",
+    "sha256": "732f21df92d7020359d3de8c29838fc457a9fe148f5efef901a4d887ec57fd31"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "delete",
+    "origin": "branding/generated/e33abf7bb7542d9f059f.png",
+    "sha256": "cfa2a50dec46f3e74754ee341820ae3a9d83029484ca0c026ae76f2d57968962"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "application_get",
+    "origin": "branding/generated/ce1a4ee97967ea491550.png",
+    "sha256": "732f21df92d7020359d3de8c29838fc457a9fe148f5efef901a4d887ec57fd31"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "lightning_go",
+    "origin": "branding/generated/fa149d8ba79c722f3dad.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "DeleteFolderHS",
+    "origin": "branding/generated/3692b8d860ae71704428.png",
+    "sha256": "8469ef4b82177417efe66482065b0a16c77e3b53e4cd04a2410d1832866dde1a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "application_put",
+    "origin": "branding/generated/8b9f2a28484c963918fd.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "computer_link",
+    "origin": "branding/generated/89e65a1df7be4c188796.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "CompMgmt",
+    "origin": "branding/generated/f509446086995b4c87cf.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "options",
+    "origin": "branding/generated/9822a661a0b52dc9dabd.png",
+    "sha256": "732f21df92d7020359d3de8c29838fc457a9fe148f5efef901a4d887ec57fd31"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "computer_security",
+    "origin": "branding/generated/6fc9cbd52a4cb03f876e.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "ico_scapture",
+    "origin": "branding/generated/2e970b4c18ac84c1a3e6.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "treeIcon_vnc",
+    "origin": "branding/generated/5e6bf276be641fda7003.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "DeleteHS",
+    "origin": "branding/generated/411744aebd3e3ad87e15.png",
+    "sha256": "cfa2a50dec46f3e74754ee341820ae3a9d83029484ca0c026ae76f2d57968962"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "application_xp_terminal",
+    "origin": "branding/generated/4b0715e8c59f09b78386.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "smallterm",
+    "origin": "branding/generated/fbc8f95d784b0fd74a3e.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "history_icon_today",
+    "origin": "branding/generated/76ff2c0d38340778c519.png",
+    "sha256": "ef8a2afbdbbe205fa219b31b67f17884abc95098b165aa5e9ab9714257957660"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "escape",
+    "origin": "branding/generated/b5f4c715f5d1d1bd2044.png",
+    "sha256": "732f21df92d7020359d3de8c29838fc457a9fe148f5efef901a4d887ec57fd31"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "search_glyph",
+    "origin": "branding/generated/3ecb5cb8907e19111e50.png",
+    "sha256": "8ff7d7987a5f7fad0a6019178a234ab024736e95a1c71283e58a4ee808d20c7f"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "application_user",
+    "origin": "branding/generated/c5a63facae8208852c59.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Properties/Resources.resx",
+    "key": "vnc",
+    "origin": "branding/generated/b9018987b71d3a43b0e4.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/CaptureManager/CaptureManagerLayout.resx",
+    "key": "imageListTree.ImageStream",
+    "origin": "DeskPilotArtwork.cs",
+    "count": 2
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Forms/PopupTerminal.resx",
+    "key": "AttachToolStripButton.Image",
+    "origin": "branding/generated/dc33e27fba2183de2552.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Wizard/EnterPassword.resx",
+    "key": "hideRevealButtonImages.ImageStream",
+    "origin": "DeskPilotArtwork.cs",
+    "count": 2
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Common/Forms/CredentialsPanel.resx",
+    "key": "revealPwdButtonImages.ImageStream",
+    "origin": "DeskPilotArtwork.cs",
+    "count": 2
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Rdp/DiskDrivesForm.resx",
+    "key": "$this.Icon",
+    "origin": "upstream/Terminals/Source/Terminals/DeskPilot.ico",
+    "sha256": "0c1ab0b210eae5d44b3f2981c3b60e57caebf7cc12f7819c70dc2d4635bab67a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Rdp/Properties/Resources.resx",
+    "key": "server_network",
+    "origin": "branding/generated/59b3da2990edac571ddb.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Rdp/Properties/Resources.resx",
+    "key": "treeIcon_rdp",
+    "origin": "branding/generated/1841b496772b0c021012.png",
+    "sha256": "fad34b5947691040060abcdb830f2f5125ef01a3eb1dfa8c76a1b4c9a89aba4a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Rdp/Properties/Resources.resx",
+    "key": "Progress",
+    "origin": "branding/generated/0a520b1f91e86ffcd44c.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Rdp/Properties/Resources.resx",
+    "key": "folder",
+    "origin": "branding/generated/3c306472e1819e8de2ac.png",
+    "sha256": "8469ef4b82177417efe66482065b0a16c77e3b53e4cd04a2410d1832866dde1a"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Putty/Properties/Resources.resx",
+    "key": "Refresh",
+    "origin": "branding/generated/3afa1c0dd91755a1d2f3.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Putty/Properties/Resources.resx",
+    "key": "treeIcon_ssh",
+    "origin": "branding/generated/aae6c7933781467a8de1.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Putty/Properties/Resources.resx",
+    "key": "treeIcon_telnet",
+    "origin": "branding/generated/4016f5e14dae113ddc52.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Web/MiniBrowser.resx",
+    "key": "backButton.Image",
+    "origin": "branding/generated/968c273dc61bdad34485.png",
+    "sha256": "ef8a2afbdbbe205fa219b31b67f17884abc95098b165aa5e9ab9714257957660"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Web/MiniBrowser.resx",
+    "key": "homeButton.Image",
+    "origin": "branding/generated/6b07baa646503a55eb0e.png",
+    "sha256": "732f21df92d7020359d3de8c29838fc457a9fe148f5efef901a4d887ec57fd31"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Web/MiniBrowser.resx",
+    "key": "forwardButton.Image",
+    "origin": "branding/generated/9ab25c5e39f6e4743d24.png",
+    "sha256": "8568e03d669892db34f85943ac3bc93cd834df34fdd24e207f0b6c4dc80ec8d1"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals.Plugins.Web/Properties/Resources.resx",
+    "key": "treeIcon_http",
+    "origin": "branding/generated/c0baaadaac56c1f05abe.png",
+    "sha256": "313cbddfe31756e5b03361def6a8c95ee0987d327e8552e77cf509f60fcbc07e"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "certmgr.msc.jpg",
+    "origin": "branding/generated/thumb-67d0f4ffa11c76.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "ciadv.msc.jpg",
+    "origin": "branding/generated/thumb-9ecc1dcd41bc0d.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "comexp.msc.jpg",
+    "origin": "branding/generated/thumb-c3c3d4fc3fb6b6.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "compmgmt.msc.jpg",
+    "origin": "branding/generated/thumb-ac9d3c61b95112.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "devmgmt.msc.jpg",
+    "origin": "branding/generated/thumb-28ad7b41ac273d.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "dfrg.msc.jpg",
+    "origin": "branding/generated/thumb-b0e33d97f60bd1.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "diskmgmt.msc.jpg",
+    "origin": "branding/generated/thumb-4ecb76215e5d72.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "eventvwr.msc.jpg",
+    "origin": "branding/generated/thumb-bfaf0dbbf55686.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "faxserv.msc.jpg",
+    "origin": "branding/generated/thumb-0580855d329598.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "fsmgmt.msc.jpg",
+    "origin": "branding/generated/thumb-5de2016f53d64e.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "gpedit.msc.jpg",
+    "origin": "branding/generated/thumb-1639416e6207bb.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "ias.msc.jpg",
+    "origin": "branding/generated/thumb-e48ac0992a4264.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "lusrmgr.msc.jpg",
+    "origin": "branding/generated/thumb-0fb03dabd3e4ec.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "ntmsmgr.msc.jpg",
+    "origin": "branding/generated/thumb-6e84bd98901b0e.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "ntmsoprq.msc.jpg",
+    "origin": "branding/generated/thumb-a20af7f5964342.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "perfmon.msc.jpg",
+    "origin": "branding/generated/thumb-58cc63c08c6798.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "secpol.msc.jpg",
+    "origin": "branding/generated/thumb-dc2979a073b1d0.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "services.msc.jpg",
+    "origin": "branding/generated/thumb-5829f84aa9d0f8.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "timedate.cpl.jpg",
+    "origin": "branding/generated/thumb-6498a942059b8b.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  },
+  {
+    "resource": "upstream/Terminals/Source/Terminals/Terminals.csproj",
+    "key": "wmimgmt.msc.jpg",
+    "origin": "branding/generated/thumb-d3f33108ece8ad.jpg",
+    "sha256": "653e98171069695daedb8dab4f9e48f683d1f56b51619f0e267af1581ab2b406"
+  }
+]

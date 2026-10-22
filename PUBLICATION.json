@@ -1,0 +1,9 @@
+{
+  "release": "0.1.0-beta.3",
+  "origin": "Fresh import of reviewed corresponding-source archive; development Git history and vendor binary archives are not imported.",
+  "sourceArchive": "DeskPilot-64b4d300-Source.zip",
+  "sourceSha256": "3f2e889a6adadb1c0874a510997d2819b2c22feaf0da251df1c6576f0e779f25",
+  "originalBuild": "64b4d3007994fbdfbee638314357c62fa19cdf90",
+  "sourceFiles": 847,
+  "additionalFiles": "Product README, source-build README copy, screenshot gallery/provenance, publication record and ignore rules. Original manifest-listed build inputs are unchanged."
+}

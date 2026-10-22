@@ -1,0 +1,6 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup><Configuration Condition="'$(Configuration)'==''">Release</Configuration><Platform Condition="'$(Platform)'==''">AnyCPU</Platform><ProjectGuid>{E7060366-18ED-4BEF-A72C-44AB31ED7914}</ProjectGuid><OutputType>Library</OutputType><AssemblyName>DeskPilot.Tabs</AssemblyName><TargetFrameworkVersion>v4.8</TargetFrameworkVersion><OutputPath>bin\$(Configuration)\</OutputPath></PropertyGroup>
+  <ItemGroup><Reference Include="System"/><Reference Include="System.Core"/><Reference Include="System.Drawing"/><Reference Include="System.Windows.Forms"/></ItemGroup>
+  <ItemGroup><Compile Include="SessionTabs.cs"/></ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+</Project>

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "publicDistributionApproved": true,
+  "blockers": [],
+  "resolved": [
+    {
+      "id": "tab-control",
+      "evidence": "docs/release/LICENSE-REVIEW.md; scripts/audit-release.py; Windows verification run 39859225763"
+    },
+    {
+      "id": "external-sources",
+      "evidence": "docs/release/LICENSE-REVIEW.md; scripts/audit-release.py; Windows verification run 39859225763"
+    },
+    {
+      "id": "redistribution-notices",
+      "evidence": "docs/release/LICENSE-REVIEW.md; scripts/audit-release.py; Windows verification run 39859225763"
+    },
+    {
+      "id": "corresponding-source",
+      "evidence": "docs/release/LICENSE-REVIEW.md; scripts/audit-release.py; Windows verification run 39859225763"
+    },
+    {
+      "id": "ef5-redistribution",
+      "evidence": "docs/release/LICENSE-REVIEW.md; scripts/audit-release.py; Windows verification run 39859225763"
+    }
+  ],
+  "scope": "Core beta only: RDP, SSH, HTTP/HTTPS, official WireGuard integration, customer/credential data. Preserve included MS-CL and component-specific notices and matching source.",
+  "verification": "https://github.com/jon-c650/deskpilot/actions/runs/39859225763",
+  "limits": [
+    "Unsigned beta; no publisher trust or Windows reputation guarantee.",
+    "Authenticated live RDP/SSH/web/VPN acceptance remains manual.",
+    "Website bundle is uploaded only after current candidate installer/data tests and no-checkout source rebuild pass."
+  ]
+}

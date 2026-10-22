@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="arrow_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\4f93a07177d19ae33d30.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="treeIcon_telnet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\c458d9516241cadaae01.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="RotatedHeaderForWizard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeskPilotWizard.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\bbffa77b86254da4df10.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="terminalsbanner-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeskPilotBannerSmall.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="server_administrator_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\1e4de414593c47c22139.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\ea027412ebe68e099262.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="server_network" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\7ceea6ca00f1da4fd6dd.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="BasicTree" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\BasicTree.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\6f70af36ec8adc079904.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="ControlPanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\2b11b27e3de35f8430ba.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\8717b1a0c1a04c583319.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="treeIcon_rdp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\1104511e0e8fbbd1616f.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="treeIcon_ssh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\bfc1c81f4210588b5d9f.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="screen_capture_box" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\02933701ee9e79c7cc7d.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="XPfolder_Open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\9f1920e2e0361fde7c16.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="tag_blue_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\9813581a1612ad53eea0.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="terminalsicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeskPilotLogo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="treeIcon_http" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\b3c74ad682f9493b014e.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="terminalsbanner-left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeskPilotBannerLeft.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\b13fbc97d9f914cb405f.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="ShowPanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\b06aa38ad565e31bbb93.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="amber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\f51725330288738a539e.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="arrow_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\08cd9f1ccd0ff16dc5d3.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="terminalsbanner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeskPilotBanner.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="application_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\5f603a731a168ae5519e.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="tag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\8471f302a9baf3fa0d63.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="XPfolder_closed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\c3593136dd8454c7b2e0.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="camera" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\363a6a27c72ced745272.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="Filtering" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Filtering.html;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="application_lightning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\eb09878f0545f4a1a482.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="keyboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\fa54bb1904b2e20ea3c2.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\7e208423078f998a6f5d.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="Properties" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\8fb300c2ad3cdb09731a.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\5d5bb9b7d7e28e415ce1.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="tag_blue_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\1d12da7acd98c85198c5.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="atoz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\504fed36d8bc2be7ea65.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="disconnect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\9b65743a76d8bf6abe64.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="NewFolderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\38591bd1303cb6c06003.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\2701d9892e4c522aa89c.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="amazon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\f00891cb1edd54307bec.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="HidePanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\9abce6bee8ac8e099aea.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="polarized_glasses" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\faef396337c9566cab21.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="arrow_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\a144fd6872a22dbc396b.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="collapse_all" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\8a1c2e1a1a2da0500f6b.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\e33abf7bb7542d9f059f.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="application_get" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\ce1a4ee97967ea491550.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="lightning_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\fa149d8ba79c722f3dad.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="DeleteFolderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\3692b8d860ae71704428.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="application_put" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\8b9f2a28484c963918fd.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="computer_link" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\89e65a1df7be4c188796.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="CompMgmt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\f509446086995b4c87cf.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="options" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\9822a661a0b52dc9dabd.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="computer_security" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\6fc9cbd52a4cb03f876e.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="ico_scapture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\2e970b4c18ac84c1a3e6.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="Terminals" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Terminals.config;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="treeIcon_vnc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\5e6bf276be641fda7003.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="DeleteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\411744aebd3e3ad87e15.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="application_xp_terminal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\4b0715e8c59f09b78386.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="smallterm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\fbc8f95d784b0fd74a3e.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="history_icon_today" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\76ff2c0d38340778c519.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="escape" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\b5f4c715f5d1d1bd2044.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="search_glyph" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\3ecb5cb8907e19111e50.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="application_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\c5a63facae8208852c59.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="vnc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\..\..\branding\generated\b9018987b71d3a43b0e4.png;System.Drawing.Bitmap, System.Drawing</value></data>
+  
+  <data name="PluginSelectionErrorMessage" xml:space="preserve">
+    <value>Atleast one protocol needs to be selected.</value>
+  </data>
+</root>

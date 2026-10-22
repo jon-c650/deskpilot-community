@@ -1,0 +1,22 @@
+{
+  "os": "Microsoft Windows NT 10.0.20348.0",
+  "description": "Managed interop generated from the installed Windows RDP API, not an OS implementation",
+  "toolVersion": "4.8.9037.0 built by: NET481REL1",
+  "controlVersion": "10.0.20348.5622 (WinBuild.160101.0800)",
+  "wrappers": [
+    {
+      "name": "AxInterop.MSTSCLib.dll",
+      "sha256": "D111905750EA7DC4162C13418285EB6BF450C64DA1D00998D9F110F2F8890D20"
+    },
+    {
+      "name": "MSTSCLib.dll",
+      "sha256": "ECE16EF3A5B17BEF2C012CA8FFE412CBECCF15A76F26A08A868422D178A52183"
+    }
+  ],
+  "sources": [
+    {
+      "name": "AxInterop.MSTSCLib.cs",
+      "sha256": "FCEE388566D7994899E4A836A67BD1C15D29648E735C4E46D1777F3E44BAE4AD"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "builtFromReviewedSource": [
+    "DeskPilot.Preview.exe",
+    "DeskPilot.WireGuardHelper.exe",
+    "DeskPilot.Tabs.dll",
+    "Terminals.Common.dll",
+    "Terminals.External.dll",
+    "Terminals.Plugins.Rdp.dll",
+    "Terminals.Plugins.Putty.dll",
+    "Terminals.Plugins.Web.dll"
+  ],
+  "vendorHashes": {
+    "EntityFramework.dll": [
+      "84a40c697f5ba214143fc8d29d9a2828d20412d1e5ab4065a9a9618cfadbaad0"
+    ],
+    "EntityFramework.SqlServer.dll": [
+      "70644f7909e7992af98b03f9964f64521ac2428f5a6f14098aab412d19d5b56c"
+    ],
+    "log4net.dll": [
+      "37ce697d20ad7056d886b28061997feb90e6ce0df6a2be76e988dbf701d656d1"
+    ],
+    "Newtonsoft.Json.dll": [
+      "3d41097c1589caa9635dec3b9340b6946274e2b2fb70dbf623db6688e3a46bff"
+    ],
+    "Microsoft.Web.WebView2.Core.dll": [
+      "51cf9131e4dbba007a6448dbeb6ba008189645f9c968594ebe4a16867c26242f",
+      "d02703bbc554a915867bd51c1449719f7a3988683c34fab4426d5975b9171f35",
+      "d60e6e94245078cb56e44ebd5f360dc04bf18e460136be93bfc4cfca43b98505",
+      "f01305d9f42bcf99af7df598a3218601b64a765df85779a10784e53370429d98"
+    ],
+    "Microsoft.Web.WebView2.WinForms.dll": [
+      "6a9e6856f23c463783c3afb0ca5d78f56324c86657162ccb16d5227b3233b32a"
+    ],
+    "Microsoft.Web.WebView2.Wpf.dll": [
+      "f05a06bbc03afcb83dc98168b8d343d9015b2a533edbfac90c52d88894b653e4"
+    ],
+    "WebView2Loader.dll": [
+      "3426dcc55fdfb8b5e7ac623cf33b4ccf283fbf68a0c5a65bddfdb4d749a8abee",
+      "4f48cb32d34298c86cca2108057eea0d900b5e422575e926e8086318a0b9cbf0",
+      "87c61e2cae380112c60853e28178b8ea9a0d63739fc03cead680d4ad3fde6b7d"
+    ],
+    "putty.exe": [
+      "4c70267ca03a00ea761ec358498b990a7221decb36eace9b7dbe6a751be0fb3b"
+    ],
+    "pageant.exe": [
+      "16818a55ab56ce5dc080da7d3655c8dca6539384801ec96c30744839a1ce6d96"
+    ],
+    "puttygen.exe": [
+      "0912f3ab31c1cdc60e749406e1dd8e0fc4867dfa4d85062ce10ce201d7f77511"
+    ],
+    "FluentValidation.dll": [
+      "67e277a9daca595e6a3900ecae03435577fbf4a25760807731dbc21b003a6165"
+    ],
+    "FluentValidation.resources.dll": [
+      "5960b8fc61ca440cf67175585838c24d4138ebe8a4e4d9a8b5c798646e617f4f",
+      "4a7040c8e401abf2ac586a51870e7e58cc5aa6fcdb0ff05b2f30ec6535819a98",
+      "7c401ff64a0f51eb10ed1930d7f87fd46029aabf5c385a6c553f2bedb1b8a4f8",
+      "e63cf56df61813f3a20373b655ede9271d6f7ec538681b203223bdd82c8da891",
+      "7108a8036ecab156c429c36eee45bcf9bb573b456a2e873516384ffbe09c8324",
+      "06488c6ecd68e131105cd0955bf8783b53d2344593e5a94c296d18808fbd3ba7",
+      "91b2dd9e082750b0c3bcb3be7df222ae1bf12be2a1defbec0a12a63a21e849d3",
+      "26322b9630ce4ec8864b40b5f37c27b8f3fda52dafc87c1627107b6e3a5ac282",
+      "936a72feee719d02db013abf5e0ddde17a518ac405759ffdc8c977e68e6d20e1",
+      "9646cf0de1ef5fa5de7259d3ee7a5e8743c973a0673e4d33b2985744160b3be4",
+      "58e04ccd442eeda42234e0d04d4254620fa5d42acaff6c787c1bc80d23040d30",
+      "3fa893cc4d84708c1862e4496da6973ab6e17e38f63a1e6a85272a1e0bdc1082",
+      "aafb8c21b4d3edd9b25a3fd3ee004ca4c1686b906baab2962f9b80715786a684",
+      "7ea1e61849db3eb68579c2b4c4d23bf51f305dbff06c02bc1ed78390bb208d74"
+    ]
+  }
+}

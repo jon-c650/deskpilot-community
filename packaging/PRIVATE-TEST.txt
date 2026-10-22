@@ -1,0 +1,21 @@
+DeskPilot Beta — PRIVATE INSTALLER TEST
+
+This build is for testing installation, upgrades and removal only. It has NOT
+passed the license clearance required for public distribution. Do not upload
+this installer to a website. See docs/release/LICENSE-REVIEW.md in the source.
+
+Existing DeskPilot connections, credentials, folder defaults and VPN associations
+continue to use the same local Windows user profile. Setup and Uninstall never
+copy, migrate or remove these records or original Terminals records. Uninstall
+removes the installed application and its shortcuts only.
+
+Close DeskPilot and all sessions before upgrading or removing the application.
+An older portable copy can remain on disk; do not run both at the same time.
+
+RDP uses Windows' installed Remote Desktop component. Web sessions require the
+Microsoft Edge WebView2 Runtime. VPN requires the official WireGuard for Windows
+application; tunnel operations may request normal Windows administrator consent.
+No Windows security settings are relaxed by this installer.
+
+This beta installer is unsigned. Windows may show an unknown-publisher or
+SmartScreen warning. An installer does not establish publisher trust by itself.

@@ -1,0 +1,10 @@
+{
+  "release": "0.1.0-beta.3",
+  "build": "64b4d3007994fbdfbee638314357c62fa19cdf90",
+  "description": "Unmodified actual Windows UI captures with synthetic CI data. No real customer system is depicted.",
+  "sha256": {
+    "deskpilot-protocol-icons.png": "aa2769f6bae544e4093856064b7bb0329e4bce73f150b66a5acd23ece9da9e91",
+    "deskpilot-folder-properties.png": "d4cc3fedf4463aa1949ac21f71b28b98e931f1fb607ad27cac48c9d48ad6e02f",
+    "deskpilot-web-session.png": "0a4f43b4162c346ae2def25b347884faf31e8a7989f734721afaba933771d322"
+  }
+}
