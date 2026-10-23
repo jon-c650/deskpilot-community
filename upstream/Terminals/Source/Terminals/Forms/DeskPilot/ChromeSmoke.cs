@@ -48,6 +48,7 @@ namespace Terminals
                 foreach(string name in new[]{"menuStrip","toolbarStd","tsRemoteToolbar","favoriteToolBar","SpecialCommandsToolStrip"})
                     strips.Add(strips.Count,new ToolStripSetting {Name=name,Dock="Top",Row=strips.Count,Visible=false,Left=3,Top=24*strips.Count});
                 strips.Save();
+                MainForm.VerifyClassicLayoutRecovery(persistence,manager,icons);
                 var form = new MainForm(persistence,manager,icons);
                 form.Shown += delegate { form.BeginInvoke(new Action(delegate {
                     try { form.RunChromeSmokeChecks(favorite,result); }
@@ -61,12 +62,28 @@ namespace Terminals
     }
     internal partial class MainForm
     {
+        internal static void VerifyClassicLayoutRecovery(IPersistence persistence,ConnectionManager manager,FavoriteIcons icons)
+        {
+            File.WriteAllText(ChromeSettingsPath,"classic");
+            using(var classic=new MainForm(persistence,manager,icons)) {
+                classic.Show();Application.DoEvents();
+                if(classic.chromeHost!=null || !classic.menuStrip.Visible || classic.menuStrip.Parent!=classic)
+                    throw new InvalidOperationException("Classic startup with hidden saved toolbars lost the recovery menu");
+                var menu=classic.viewToolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>().Single(i=>i.Text=="Interface on next launch");
+                var dark=menu.DropDownItems.OfType<ToolStripMenuItem>().Single(i=>(string)i.Tag=="dark");
+                dark.PerformClick();
+                if(classic.ReadChromeMode()!="dark" || !dark.Checked) throw new InvalidOperationException("Classic View menu failed to persist DeskPilot recovery");
+                classic.Hide();
+            }
+        }
         [DllImport("user32.dll")] private static extern IntPtr WindowFromPoint(Point point);
         [DllImport("user32.dll")] private static extern bool IsChild(IntPtr parent,IntPtr child);
         internal void RunChromeSmokeChecks(IFavorite favorite,string report)
         {
             WindowState = FormWindowState.Maximized; Application.DoEvents();
             File.WriteAllText(report,"Integrated DeskPilot smoke; actual disconnected RDP ActiveX; no live server.\n");
+            if(chromeHost==null || ReadChromeMode()!="dark") throw new InvalidOperationException("Relaunch did not restore DeskPilot after Classic View selection");
+            File.AppendAllText(report,"PASS actual Classic startup with hidden saved menu, View interface selection, persisted dark mode and DeskPilot relaunch recovery\n");
             chromeTimer.Stop();
             FolderAssert(Program.DownloadedPluginBlockVerified,"Downloaded plugin protection was not exercised");
             File.AppendAllText(report,"PASS Windows downloaded-plugin block guidance: observed HRESULT 0x80131515 maps to ZIP Properties/Unblock instructions; no trust-policy change. CI marked-DLL probe: "+Program.DownloadedPluginProbeResult+"\n");

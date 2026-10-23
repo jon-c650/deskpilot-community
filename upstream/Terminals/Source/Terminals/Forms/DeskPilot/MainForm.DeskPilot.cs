@@ -49,7 +49,7 @@ namespace Terminals
         private readonly Dictionary<string, string> vpnStates = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private readonly ToolTip chromeTips = new ToolTip();
         private static string ChromeSettingsPath { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DeskPilot", "IsolatedPreview", "ui-mode.txt"); } }
-        private string ReadChromeMode() { try { return File.Exists(ChromeSettingsPath) ? File.ReadAllText(ChromeSettingsPath) : "dark"; } catch { return "dark"; } }
+        private string ReadChromeMode() { try { return File.Exists(ChromeSettingsPath) ? File.ReadAllText(ChromeSettingsPath).Trim().ToLowerInvariant() : "dark"; } catch { return "dark"; } }
         private void SaveChromeMode(string mode)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(ChromeSettingsPath)); File.WriteAllText(ChromeSettingsPath, mode);
@@ -58,10 +58,26 @@ namespace Terminals
         {
             if (chromeHost != null) return;
             string mode = ReadChromeMode();
-            var previewMenu = new ToolStripMenuItem("DeskPilot interface next launch");
-            previewMenu.Click += delegate { SaveChromeMode("dark"); MessageBox.Show(this,"The DeskPilot interface will open next launch.","DeskPilot"); };
-            menuStrip.Items.Add(previewMenu);
-            if (mode == "classic") return;
+            var interfaceMenu=new ToolStripMenuItem("Interface on next launch");
+            foreach(var option in new[]{new[]{"DeskPilot dark","dark"},new[]{"DeskPilot light","light"},new[]{"Classic","classic"}}) {
+                string selectedMode=option[1];
+                var choice=new ToolStripMenuItem(option[0]) {Tag=selectedMode,Checked=mode==selectedMode};
+                choice.ToolTipText="Close sessions and restart DeskPilot to apply this interface.";
+                choice.Click+=delegate {
+                    try {
+                        SaveChromeMode(selectedMode);
+                        foreach(ToolStripMenuItem item in interfaceMenu.DropDownItems) item.Checked=(string)item.Tag==selectedMode;
+                    } catch(Exception error) {MessageBox.Show(this,"Could not save the interface preference: "+error.Message,"DeskPilot",MessageBoxButtons.OK,MessageBoxIcon.Information);}
+                };
+                interfaceMenu.DropDownItems.Add(choice);
+            }
+            viewToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
+            viewToolStripMenuItem.DropDownItems.Add(interfaceMenu);
+            if (mode == "classic") {
+                RestoreChromeMenu();
+                Shown+=delegate {RestoreChromeMenu();};
+                return;
+            }
             chrome = new ChromePalette(mode == "light");
             SuspendLayout();
             // Reparent once before saved connections open. Visibility handlers never reparent a session.
@@ -355,11 +371,10 @@ namespace Terminals
         }
         private void RestoreChromeMenu()
         {
-            if(chromeHost==null) return;
             if(menuStrip.Parent!=this) Controls.Add(menuStrip);
             menuStrip.Dock=DockStyle.Top;menuStrip.AutoSize=true;menuStrip.SendToBack();
-            menuStrip.Visible=!chromeFullscreen;MainMenuStrip=menuStrip;
-            toolStripContainer.Visible=false;
+            menuStrip.Visible=chromeHost==null || !chromeFullscreen;MainMenuStrip=menuStrip;
+            if(chromeHost!=null) toolStripContainer.Visible=false;
         }
         private void SyncChromeVisibility()
         {

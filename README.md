@@ -79,8 +79,9 @@ profiles or signing keys.
 `BUILD.txt`, `SOURCE-MANIFEST.json` and `PUBLICATION.json` record the original
 release identity, reviewed input hashes and source import. The exact source ZIP
 for the downloadable installer is also a release asset. Product documentation and
-screenshots are additional files; original manifest-listed build inputs remain
-unchanged.
+screenshots are additional files. Those root records describe the initial import;
+subsequent fixes are tracked in Git. Each installer release supplies its own exact
+matching source ZIP and current manifest.
 
 - [Build from source](docs/release/BUILD-FROM-SOURCE.md)
 - [License/dependency review](docs/release/LICENSE-REVIEW.md)

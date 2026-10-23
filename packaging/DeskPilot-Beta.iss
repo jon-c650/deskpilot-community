@@ -10,12 +10,12 @@
 [Setup]
 AppId={{BC8B171E-A8F5-47E0-9092-6105638B5192}
 AppName=DeskPilot Beta
-AppVersion=0.1.0-beta.3
-VersionInfoVersion=0.1.0.3
+AppVersion=0.1.0-beta.4
+VersionInfoVersion=0.1.0.4
 #ifdef PublicBeta
-AppVerName=DeskPilot Beta 0.1.0-beta.3 ({#BuildId})
+AppVerName=DeskPilot Beta 0.1.0-beta.4 ({#BuildId})
 #else
-AppVerName=DeskPilot Beta 0.1.0-beta.3 ({#BuildId}) — private test
+AppVerName=DeskPilot Beta 0.1.0-beta.4 ({#BuildId}) — private test
 #endif
 AppPublisher=DeskPilot contributors
 DefaultDirName={localappdata}\Programs\DeskPilot Beta
@@ -26,7 +26,7 @@ DisableDirPage=yes
 UsePreviousAppDir=no
 OutputDir=..\installer-output
 #ifdef PublicBeta
-OutputBaseFilename=DeskPilot-Beta-0.1.0-beta.3-{#BuildId}-Setup
+OutputBaseFilename=DeskPilot-Beta-0.1.0-beta.4-{#BuildId}-Setup
 #else
 OutputBaseFilename=DeskPilot-Beta-Private-Test-{#BuildId}-Setup
 #endif

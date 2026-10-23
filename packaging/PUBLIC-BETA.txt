@@ -1,4 +1,4 @@
-DeskPilot Beta 0.1.0-beta.3
+DeskPilot Beta 0.1.0-beta.4
 
 Free beta software from DeskPilot contributors, based on Terminals.
 The software is supplied as-is under the included licenses, without warranty.
