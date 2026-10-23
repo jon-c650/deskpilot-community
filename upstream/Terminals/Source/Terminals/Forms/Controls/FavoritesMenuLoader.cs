@@ -94,6 +94,12 @@ namespace Terminals
                 CreateTrayMenuItems();
                 UpdateMenuAndContextMenu();
                 RegisterEventHandlers();
+                mainForm.Disposed += delegate {
+                    var dispatcher=this.persistence.Dispatcher;
+                    dispatcher.GroupsChanged -= new GroupsChangedEventHandler(this.OnDataChanged);
+                    dispatcher.FavoritesChanged -= new FavoritesChangedEventHandler(this.OnDataChanged);
+                    settings.ConfigurationChanged -= new ConfigurationChangedHandler(this.OnSettingsConfigurationChanged);
+                };
             }
 
             private void RegisterEventHandlers()
