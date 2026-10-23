@@ -112,7 +112,6 @@ namespace Terminals
             // Retain the original menu handlers, without hosting the legacy utility bars.
             toolStripContainer.TemporaryChromeHost=true;toolStripContainer.Visible=false;
             splitContainer1.Visible=false;
-            menuStrip.Items.Remove(previewMenu);previewMenu.Dispose();
             toolsToolStripMenuItem.DropDownItems.Clear();
             optionsToolStripMenuItem.Text="Options";credentialManagementToolStripMenuItem.Text="Credentials";openLogFolderToolStripMenuItem.Text="Open log folder";
             toolsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]{optionsToolStripMenuItem,credentialManagementToolStripMenuItem,openLogFolderToolStripMenuItem});
