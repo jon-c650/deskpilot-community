@@ -71,6 +71,10 @@ namespace Terminals
                 };
                 interfaceMenu.DropDownItems.Add(choice);
             }
+            interfaceMenu.DropDownOpening+=delegate {
+                string next=ReadChromeMode();
+                foreach(ToolStripMenuItem item in interfaceMenu.DropDownItems) item.Checked=(string)item.Tag==next;
+            };
             viewToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
             viewToolStripMenuItem.DropDownItems.Add(interfaceMenu);
             if (mode == "classic") {
