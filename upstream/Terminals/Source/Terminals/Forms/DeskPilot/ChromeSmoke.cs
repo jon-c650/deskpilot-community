@@ -48,7 +48,7 @@ namespace Terminals
                 foreach(string name in new[]{"menuStrip","toolbarStd","tsRemoteToolbar","favoriteToolBar","SpecialCommandsToolStrip"})
                     strips.Add(strips.Count,new ToolStripSetting {Name=name,Dock="Top",Row=strips.Count,Visible=false,Left=3,Top=24*strips.Count});
                 strips.Save();
-                MainForm.VerifyClassicLayoutRecovery(persistence,manager,icons);
+                MainForm.SeedLegacyClassicPreference();
                 var form = new MainForm(persistence,manager,icons);
                 form.Shown += delegate { form.BeginInvoke(new Action(delegate {
                     try { form.RunChromeSmokeChecks(favorite,result); }
@@ -62,19 +62,9 @@ namespace Terminals
     }
     internal partial class MainForm
     {
-        internal static void VerifyClassicLayoutRecovery(IPersistence persistence,ConnectionManager manager,FavoriteIcons icons)
+        internal static void SeedLegacyClassicPreference()
         {
             File.WriteAllText(ChromeSettingsPath,"classic");
-            using(var classic=new MainForm(persistence,manager,icons)) {
-                classic.Show();Application.DoEvents();
-                if(classic.chromeHost!=null || !classic.menuStrip.Visible || classic.menuStrip.Parent!=classic)
-                    throw new InvalidOperationException("Classic startup with hidden saved toolbars lost the recovery menu");
-                var menu=classic.viewToolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>().Single(i=>i.Text=="Interface on next launch");
-                var dark=menu.DropDownItems.OfType<ToolStripMenuItem>().Single(i=>(string)i.Tag=="dark");
-                dark.PerformClick();
-                if(classic.ReadChromeMode()!="dark" || !dark.Checked) throw new InvalidOperationException("Classic View menu failed to persist DeskPilot recovery");
-                classic.Hide();
-            }
         }
         [DllImport("user32.dll")] private static extern IntPtr WindowFromPoint(Point point);
         [DllImport("user32.dll")] private static extern bool IsChild(IntPtr parent,IntPtr child);
@@ -82,8 +72,20 @@ namespace Terminals
         {
             WindowState = FormWindowState.Maximized; Application.DoEvents();
             File.WriteAllText(report,"Integrated DeskPilot smoke; actual disconnected RDP ActiveX; no live server.\n");
-            if(chromeHost==null || ReadChromeMode()!="dark") throw new InvalidOperationException("Relaunch did not restore DeskPilot after Classic View selection");
-            File.AppendAllText(report,"PASS actual Classic startup with hidden saved menu, View interface selection, persisted dark mode and DeskPilot relaunch recovery\n");
+            if(chromeHost==null || ReadChromeMode()!="dark" || !tcTerminals.ModernTabs)
+                throw new InvalidOperationException("Saved Classic preference did not automatically open DeskPilot dark");
+            if(File.ReadAllText(ChromeSettingsPath)!="classic") throw new InvalidOperationException("Startup unexpectedly rewrote the saved UI preference");
+            var theme=viewToolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>().Single(i=>i.Text=="DeskPilot theme on next launch");
+            var choices=theme.DropDownItems.OfType<ToolStripMenuItem>().ToArray();
+            if(choices.Length!=2 || !choices.Any(i=>(string)i.Tag=="dark") || !choices.Any(i=>(string)i.Tag=="light"))
+                throw new InvalidOperationException("View menu offers a non-DeskPilot interface");
+            if(chromeLayoutMenu.Items.Cast<ToolStripItem>().Any(i=>i.Text.IndexOf("classic",StringComparison.OrdinalIgnoreCase)>=0))
+                throw new InvalidOperationException("Layout menu still offers Classic");
+            choices.Single(i=>(string)i.Tag=="light").PerformClick();
+            if(ReadChromeMode()!="light") throw new InvalidOperationException("DeskPilot light preference failed to save");
+            choices.Single(i=>(string)i.Tag=="dark").PerformClick();
+            if(ReadChromeMode()!="dark") throw new InvalidOperationException("DeskPilot dark preference failed to save");
+            File.AppendAllText(report,"PASS saved Classic preference automatically opens DeskPilot without startup writes; no Classic choice in Layout/View; dark/light preferences work\n");
             chromeTimer.Stop();
             FolderAssert(Program.DownloadedPluginBlockVerified,"Downloaded plugin protection was not exercised");
             File.AppendAllText(report,"PASS Windows downloaded-plugin block guidance: observed HRESULT 0x80131515 maps to ZIP Properties/Unblock instructions; no trust-policy change. CI marked-DLL probe: "+Program.DownloadedPluginProbeResult+"\n");
@@ -158,7 +160,7 @@ namespace Terminals
             string stripPath=FileLocations.ToolStripsFullFileName;
             string savedStrips=File.Exists(stripPath) ? File.ReadAllText(stripPath) : null;
             toolStripContainer.SaveLayout();
-            if(savedStrips!=(File.Exists(stripPath) ? File.ReadAllText(stripPath) : null)) throw new InvalidOperationException("Preview changed classic toolbar layout");
+            if(savedStrips!=(File.Exists(stripPath) ? File.ReadAllText(stripPath) : null)) throw new InvalidOperationException("DeskPilot changed saved legacy toolbar preferences");
             // Exercise the original File/New Favorite command through its real editor.
             bool editorOpened=false;
             using(var closeEditor=new Timer {Interval=100}) {
@@ -188,7 +190,7 @@ namespace Terminals
                 closeAbout.Start();aboutToolStripMenuItem.PerformClick();closeAbout.Stop();
             }
             if(!aboutOpened) throw new InvalidOperationException("Tools menu did not invoke the original About command");
-            File.AppendAllText(report,"PASS main menu File editor and About commands; Tools has only Options, Credentials and Open log folder; classic layout preserved\n");
+            File.AppendAllText(report,"PASS main menu File editor and About commands; Tools has only Options, Credentials and Open log folder; saved toolbar preferences preserved\n");
             foreach(var window in windows.Where(w=>!w.Embedded)) {
                 foreach(var other in windows.Where(w=>!w.Embedded)) {other.Requested=false;other.Hide();}
                 ShowChrome(window); Application.DoEvents();

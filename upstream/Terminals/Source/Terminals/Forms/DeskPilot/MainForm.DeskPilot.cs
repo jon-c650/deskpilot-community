@@ -49,20 +49,29 @@ namespace Terminals
         private readonly Dictionary<string, string> vpnStates = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private readonly ToolTip chromeTips = new ToolTip();
         private static string ChromeSettingsPath { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DeskPilot", "IsolatedPreview", "ui-mode.txt"); } }
-        private string ReadChromeMode() { try { return File.Exists(ChromeSettingsPath) ? File.ReadAllText(ChromeSettingsPath).Trim().ToLowerInvariant() : "dark"; } catch { return "dark"; } }
+        private ContextMenuStrip chromeLayoutMenu;
+        private string ReadChromeMode()
+        {
+            try {
+                string saved=File.Exists(ChromeSettingsPath) ? File.ReadAllText(ChromeSettingsPath).Trim() : "";
+                // Old Classic preferences fall back safely without rewriting any user files.
+                return String.Equals(saved,"light",StringComparison.OrdinalIgnoreCase) ? "light" : "dark";
+            } catch {return "dark";}
+        }
         private void SaveChromeMode(string mode)
         {
+            if(mode!="dark" && mode!="light") throw new ArgumentException("Only DeskPilot dark and light themes are supported.","mode");
             Directory.CreateDirectory(Path.GetDirectoryName(ChromeSettingsPath)); File.WriteAllText(ChromeSettingsPath, mode);
         }
         private void InitializeDeskPilot()
         {
             if (chromeHost != null) return;
             string mode = ReadChromeMode();
-            var interfaceMenu=new ToolStripMenuItem("Interface on next launch");
-            foreach(var option in new[]{new[]{"DeskPilot dark","dark"},new[]{"DeskPilot light","light"},new[]{"Classic","classic"}}) {
+            var interfaceMenu=new ToolStripMenuItem("DeskPilot theme on next launch");
+            foreach(var option in new[]{new[]{"DeskPilot dark","dark"},new[]{"DeskPilot light","light"}}) {
                 string selectedMode=option[1];
                 var choice=new ToolStripMenuItem(option[0]) {Tag=selectedMode,Checked=mode==selectedMode};
-                choice.ToolTipText="Close sessions and restart DeskPilot to apply this interface.";
+                choice.ToolTipText="Close sessions and restart DeskPilot to apply this theme.";
                 choice.Click+=delegate {
                     try {
                         SaveChromeMode(selectedMode);
@@ -77,11 +86,6 @@ namespace Terminals
             };
             viewToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
             viewToolStripMenuItem.DropDownItems.Add(interfaceMenu);
-            if (mode == "classic") {
-                RestoreChromeMenu();
-                Shown+=delegate {RestoreChromeMenu();};
-                return;
-            }
             chrome = new ChromePalette(mode == "light");
             SuspendLayout();
             // Reparent once before saved connections open. Visibility handlers never reparent a session.
@@ -242,7 +246,7 @@ namespace Terminals
             var theme=row.Controls[row.Controls.Count-1]; theme.Width=44;
             var utilities=new FlowLayoutPanel {Dock=DockStyle.Fill,WrapContents=false,Margin=Padding.Empty};
             utilities.Controls.Add(theme); header.Controls.Add(utilities,4,0);
-            var layoutMenu = new ContextMenuStrip(components);
+            var layoutMenu = chromeLayoutMenu = new ContextMenuStrip(components);
             var customerItem = new ToolStripMenuItem("Customers (fixed sidebar)", ChromeIcons.Create("folder")) {Enabled=false};
             var inspectorItem = new ToolStripMenuItem("Inspector", ChromeIcons.Create("server"));
             var toolbarItem = new ToolStripMenuItem("Session controls (top bar)", ChromeIcons.Create("settings")) {Enabled=false};
@@ -251,7 +255,6 @@ namespace Terminals
             toolbarItem.Click += delegate { ToggleChrome(commandOverlay); };
             layoutMenu.Items.AddRange(new ToolStripItem[]{customerItem,inspectorItem,toolbarItem,new ToolStripSeparator()});
             layoutMenu.Items.Add("Focus canvas", ChromeIcons.Create("fullscreen"), delegate { foreach(var overlay in ChromeOverlays().Where(w=>!w.Embedded)) { overlay.Requested=false; overlay.Hide(); } if(CurrentTerminal != null) CurrentTerminal.Focus(); });
-            layoutMenu.Items.Add("Classic interface next launch", null, delegate { SaveChromeMode("classic"); MessageBox.Show(this,"The classic interface will open next launch. Current sessions stay open.","DeskPilot"); });
             layoutMenu.Opening += delegate {
                 customerItem.Checked=customerOverlay.Requested; inspectorItem.Checked=inspectorOverlay.Requested; toolbarItem.Checked=commandOverlay.Requested;
                 chrome.Apply(layoutMenu);
