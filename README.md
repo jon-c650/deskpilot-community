@@ -7,8 +7,8 @@ DeskPilot is a free, source-available Windows connection manager based on
 SSH terminals and device web interfaces in one tabbed workspace, with customer
 folders, inherited connection settings and optional WireGuard VPN associations.
 
-[Download DeskPilot Beta](https://github.com/jon-c650/deskpilot-community/releases/download/v0.1.0-beta.3/DeskPilot-Beta-0.1.0-beta.3-Website.zip)
-· [Release notes and individual downloads](https://github.com/jon-c650/deskpilot-community/releases/tag/v0.1.0-beta.3)
+[Download DeskPilot Beta](https://github.com/jon-c650/deskpilot-community/releases/download/v0.1.0-beta.4/DeskPilot-Beta-0.1.0-beta.4-Website.zip)
+· [Release notes and individual downloads](https://github.com/jon-c650/deskpilot-community/releases/tag/v0.1.0-beta.4)
 · [JC Electronics](https://jcelectronics.net)
 
 ![DeskPilot customer folders and embedded web session](docs/screenshots/deskpilot-web-session.png)
@@ -18,7 +18,7 @@ These screenshots do not depict a real customer system.*
 
 ## Install the beta
 
-Current release: **0.1.0-beta.3**, Windows 10/11 with .NET Framework 4.8.
+Current release: **0.1.0-beta.4**, Windows 10/11 with .NET Framework 4.8.
 
 Download the complete bundle, extract it, close running DeskPilot sessions and
 run the included **Setup.exe**. Setup installs for the current Windows user.
@@ -34,6 +34,18 @@ Retain normal backups and test your connection workflows before relying on it
 for administration. Web sessions require Microsoft's WebView2 Runtime; VPN
 features require official WireGuard for Windows. Ordinary Windows administrator
 consent still applies to privileged VPN operations.
+
+## Switch or recover the interface
+
+In both layouts, choose **View → Interface on next launch → DeskPilot dark,
+DeskPilot light, or Classic**, then close and reopen DeskPilot. The change applies
+on the next launch; it does not restart active sessions.
+
+On an older beta with a hidden Classic menu, close DeskPilot, open
+`%LOCALAPPDATA%\DeskPilot\IsolatedPreview`, rename only `ui-mode.txt` to
+`ui-mode.old`, and reopen. This resets the layout choice, leaving connection,
+credential and VPN data intact. Beta 0.1.0-beta.4 restores the Classic menu at
+startup even when the saved toolbar layout hid it.
 
 ## Features
 
